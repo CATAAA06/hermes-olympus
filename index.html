@@ -181,6 +181,23 @@
   .ben li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:50%;background:var(--mint);border:2px solid var(--teal)}
   @media(max-width:880px){.ben-grid{grid-template-columns:1fr}}
 
+  /* PRODUCTS / FLEET */
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .prod-card{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;background:#fff;transition:.25s;overflow:hidden}
+  .prod-card:hover{border-color:var(--teal);box-shadow:var(--shadow-sm);transform:translateY(-5px)}
+  .prod-card.flag{background:linear-gradient(180deg,#fff,var(--mint));border-color:var(--teal-l)}
+  .prod-card.flag::before{content:"";position:absolute;left:0;top:0;width:100%;height:4px;background:linear-gradient(90deg,var(--teal) 0 55%,var(--orange) 55% 100%)}
+  .prod-card .pico{width:54px;height:54px;border-radius:14px;background:var(--ink);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--teal-l)}
+  .prod-card h3{font-size:1.22rem;margin-bottom:2px}
+  .prod-card .god{font-size:.8rem;color:var(--muted);font-style:italic;margin-bottom:12px}
+  .prod-card .role{font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--orange-d);margin-bottom:10px}
+  .prod-card p{font-size:.93rem;color:var(--muted)}
+  .prod-card .status{position:absolute;top:22px;right:20px;font-size:.64rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+  .status.avail{background:#e7f7ee;color:#1c9d5e}
+  .status.dev{background:#fdeee2;color:var(--orange-d)}
+  .status.concept{background:#eef2f5;color:var(--muted)}
+  @media(max-width:880px){.prod-grid{grid-template-columns:1fr}}
+
   /* QUOTE / PRICE */
   .quote{background:radial-gradient(900px 500px at 15% 0%,#0e3a52 0,transparent 55%),linear-gradient(160deg,#071a2b,#0b3a5c);color:#fff}
   .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
@@ -247,6 +264,7 @@
       <a href="#features">Features</a>
       <a href="#how-it-works">How it works</a>
       <a href="#specs">Specs</a>
+      <a href="#products">Fleet</a>
       <a href="driverless.html">Driverless DNA</a>
     </nav>
     <a href="#quote" class="btn btn-primary nav-cta">Request a quote</a>
@@ -523,6 +541,74 @@
   </div>
 </section>
 
+<!-- OTHER PRODUCTS / FLEET -->
+<section id="products">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Other products · The Olympus fleet</span>
+      <h2>More than Hermes — a pantheon of robots</h2>
+      <p>Hermes is the first of a growing fleet of autonomous robots. Each one carries the name of a deity whose domain it serves — from healing to hygiene, from heavy lifting to all-seeing oversight.</p>
+    </div>
+    <div class="prod-grid">
+
+      <div class="prod-card flag reveal">
+        <span class="status avail">Available</span>
+        <div class="pico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8 13h8M8 17h5"/><circle cx="12" cy="8" r="1.5" fill="currentColor"/></svg></div>
+        <h3>Hermes</h3>
+        <div class="god">Messenger of the gods</div>
+        <div class="role">Pharmacy logistics</div>
+        <p>Our flagship. Autonomous medication delivery from the central pharmacy straight to the patient's bedside — traceable, refrigerated, badge-secured.</p>
+      </div>
+
+      <div class="prod-card reveal">
+        <span class="status dev">In development</span>
+        <div class="pico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l2-5 4 12 2-7h6"/></svg></div>
+        <h3>Asclepius</h3>
+        <div class="god">God of medicine &amp; healing</div>
+        <div class="role">Clinical ward assistant</div>
+        <p>A telepresence and vitals-monitoring robot that lets specialists run remote ward rounds and brings diagnostic instruments to the bedside.</p>
+      </div>
+
+      <div class="prod-card reveal">
+        <span class="status dev">In development</span>
+        <div class="pico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 6 6 11a6 6 0 0 1-12 0c0-5 6-11 6-11z"/><path d="M9.5 13a2.5 2.5 0 0 0 2.5 2.5" stroke-width="1.5"/></svg></div>
+        <h3>Hygeia</h3>
+        <div class="god">Goddess of health &amp; cleanliness</div>
+        <div class="role">Autonomous disinfection</div>
+        <p>A UV-C sanitization robot that sterilizes operating rooms and wards between patients — fully mapped, timed and logged for compliance.</p>
+      </div>
+
+      <div class="prod-card reveal">
+        <span class="status avail">Available · industrial</span>
+        <div class="pico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="8.5" y="4" width="7" height="7" rx="1"/></svg></div>
+        <h3>Atlas</h3>
+        <div class="god">Titan who bears the world</div>
+        <div class="role">Heavy logistics</div>
+        <p>High-payload transport for central sterile supply, linen and bulk materials across large facilities and warehouses — born from our industrial roots.</p>
+      </div>
+
+      <div class="prod-card reveal">
+        <span class="status dev">In development</span>
+        <div class="pico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6l-4 8a2 2 0 0 0 2 3h8a2 2 0 0 0 2-3l-4-8V3"/><path d="M7.5 15h9" stroke-width="1.5"/></svg></div>
+        <h3>Iris</h3>
+        <div class="god">Swift messenger of the gods</div>
+        <div class="role">STAT lab courier</div>
+        <p>Rapid refrigerated transport of blood samples and lab specimens, prioritized and tracked for time-critical analyses across departments.</p>
+      </div>
+
+      <div class="prod-card reveal">
+        <span class="status concept">Concept</span>
+        <div class="pico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Argus</h3>
+        <div class="god">The all-seeing, hundred-eyed</div>
+        <div class="role">Inventory &amp; monitoring</div>
+        <p>Autonomous scanning of stock levels, expiry dates and cold-chain temperatures, raising real-time compliance alerts across the facility.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- QUOTE / PRICE -->
 <section class="quote" id="quote">
   <div class="wrap">
@@ -612,6 +698,7 @@
         <li><a href="#solution">Solution</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#specs">Specs</a></li>
+        <li><a href="#products">The fleet</a></li>
         <li><a href="#comparison">Comparison</a></li>
       </ul></div>
       <div><h5>Company</h5><ul>
