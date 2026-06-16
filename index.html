@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hermes — Autonomous hospital logistics | Olympus</title>
+<meta name="description" content="Hermes by Olympus: the autonomous mobile robot that automates the entire medication flow, from the central pharmacy to the patient's bedside. An integrated Hospital 4.0 ecosystem built with Modula." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a2540;
+    --ink-2:#103a5e;
+    --teal:#1ba3e0;
+    --teal-d:#0e7fb5;
+    --teal-l:#7fd2f2;
+    --orange:#f26a21;
+    --orange-d:#d9560f;
+    --accent:#f26a21;
+    --mint:#e7f5fc;
+    --paper:#f3f8fc;
+    --white:#ffffff;
+    --muted:#5c7384;
+    --line:#e2ecef;
+    --shadow:0 18px 50px -20px rgba(7,26,43,.28);
+    --shadow-sm:0 6px 20px -8px rgba(7,26,43,.22);
+    --radius:18px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.02em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  section{padding:96px 0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--teal-d);margin-bottom:18px;
+  }
+  .eyebrow::before{content:"";width:26px;height:3px;background:var(--orange);border-radius:2px}
+  .lead{font-size:1.12rem;color:var(--muted);max-width:680px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;
+    font-family:'Inter';font-weight:600;font-size:.98rem;
+    padding:14px 26px;border-radius:999px;transition:.22s ease;white-space:nowrap;
+  }
+  .btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 24px -10px rgba(27,163,224,.8)}
+  .btn-primary:hover{background:var(--teal-d);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal-d)}
+  .btn-light{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.28)}
+  .btn-light:hover{background:rgba(255,255,255,.22)}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-size:1.28rem;font-weight:700;color:var(--ink)}
+  .logo-mark{width:34px;height:34px;flex:none}
+  .brand small{display:block;font-family:'Inter';font-size:.62rem;font-weight:600;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-top:1px}
+  .nav-links{display:flex;gap:26px;margin-left:auto;font-size:.95rem;font-weight:500;color:var(--ink-2)}
+  .nav-links a:hover{color:var(--teal-d)}
+  .nav-cta{margin-left:8px}
+  @media(max-width:900px){.nav-links{display:none}}
+
+  /* HERO */
+  .hero{
+    position:relative;overflow:hidden;color:#fff;padding:0;
+    background:radial-gradient(1200px 600px at 78% -10%,#15455f 0%,transparent 60%),
+               linear-gradient(165deg,#071a2b 0%,#0d3148 60%,#0b3a5c 130%);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;min-height:88vh;padding:60px 0}
+  .hero .pill{display:inline-flex;align-items:center;gap:9px;background:rgba(127,210,242,.12);border:1px solid rgba(127,210,242,.3);color:var(--teal-l);
+    padding:7px 15px;border-radius:999px;font-size:.8rem;font-weight:600;margin-bottom:26px}
+  .hero .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--teal-l);box-shadow:0 0 0 0 rgba(127,210,242,.6);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(127,210,242,.55)}70%{box-shadow:0 0 0 12px rgba(127,210,242,0)}100%{box-shadow:0 0 0 0 rgba(127,210,242,0)}}
+  .hero h1{font-size:clamp(2.6rem,5.4vw,4.4rem);font-weight:700}
+  .hero h1 .grad{background:linear-gradient(100deg,var(--teal-l),#cdeeff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{font-size:1.16rem;color:#b9cfdb;max-width:540px;margin:24px 0 34px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:34px;margin-top:48px;flex-wrap:wrap}
+  .hero-stats .s strong{display:block;font-family:'Space Grotesk';font-size:1.9rem;color:#fff;font-weight:700}
+  .hero-stats .s span{font-size:.82rem;color:#8fb0c0;letter-spacing:.02em}
+  .hero-visual{display:flex;justify-content:center;align-items:flex-end;position:relative}
+  .glowbg{position:absolute;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle,rgba(27,163,224,.32),transparent 65%);filter:blur(10px);top:8%}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;text-align:center;min-height:auto}
+    .hero p.sub{margin-left:auto;margin-right:auto}.hero-cta,.hero-stats{justify-content:center}.hero-visual{margin-top:20px}}
+
+  /* MARQUEE / trust */
+  .trust{background:var(--ink-2);padding:22px 0;color:#9fc2cf}
+  .trust-in{display:flex;align-items:center;gap:34px;flex-wrap:wrap;justify-content:center;font-size:.9rem;font-weight:500}
+  .trust-in b{color:#fff;font-weight:600}
+  .trust .sep{width:5px;height:5px;border-radius:50%;background:var(--teal)}
+
+  /* SECTION HEADERS */
+  .sec-head{max-width:720px;margin-bottom:54px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:700;margin-bottom:16px}
+  .sec-head p{color:var(--muted);font-size:1.08rem}
+
+  /* PROBLEM */
+  .problem{background:var(--paper)}
+  .prob-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .prob-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px}
+  .prob-card .n{font-family:'Space Grotesk';font-size:2.1rem;font-weight:700;color:var(--teal-d)}
+  .prob-card h4{font-size:1.04rem;margin:6px 0 8px}
+  .prob-card p{font-size:.92rem;color:var(--muted)}
+  @media(max-width:880px){.prob-grid{grid-template-columns:1fr 1fr}}
+
+  /* SOLUTION pillars */
+  .sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .sol-card{position:relative;border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;background:linear-gradient(180deg,#fff,var(--mint));overflow:hidden}
+  .sol-card .ico{width:54px;height:54px;border-radius:14px;background:var(--ink);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+  .sol-card h3{font-size:1.25rem;margin-bottom:10px}
+  .sol-card p{font-size:.96rem;color:var(--muted)}
+  .sol-card .tag{position:absolute;top:20px;right:22px;font-size:.72rem;font-weight:700;letter-spacing:.1em;color:var(--teal-d);text-transform:uppercase}
+  @media(max-width:880px){.sol-grid{grid-template-columns:1fr}}
+
+  /* FEATURES */
+  .features{background:var(--ink);color:#fff}
+  .features .sec-head h2{color:#fff}.features .sec-head p{color:#9fc2cf}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .feat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:28px 24px;transition:.25s}
+  .feat:hover{background:rgba(27,163,224,.12);border-color:rgba(27,163,224,.4);transform:translateY(-4px)}
+  .feat .fi{width:46px;height:46px;border-radius:12px;background:rgba(27,163,224,.16);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--teal-l)}
+  .feat h4{font-size:1.1rem;margin-bottom:8px}
+  .feat p{font-size:.92rem;color:#a9c3d1}
+  @media(max-width:880px){.feat-grid{grid-template-columns:1fr}}
+
+  /* HOW IT WORKS */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;margin-top:30px}
+  .step{position:relative;padding:0 16px}
+  .step .dot{width:46px;height:46px;border-radius:50%;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;font-size:1.05rem;margin-bottom:18px;z-index:2;position:relative}
+  .step::before{content:"";position:absolute;top:23px;left:0;right:0;height:2px;background:var(--line);z-index:1}
+  .step:first-child::before{left:50%}
+  .step:last-child::before{right:50%}
+  .step h4{font-size:1rem;margin-bottom:6px}
+  .step p{font-size:.88rem;color:var(--muted)}
+  @media(max-width:880px){.steps{grid-template-columns:1fr;gap:24px}.step::before{display:none}.step{display:flex;gap:16px;align-items:flex-start}.step .dot{flex:none;margin-bottom:0}}
+
+  /* SPECS */
+  .specs{background:var(--paper)}
+  .spec-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+  .spec-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .spec-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+  .spec-card .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+  .spec-card .val{font-family:'Space Grotesk';font-size:1.5rem;font-weight:700;color:var(--ink);margin-top:4px}
+  .spec-card .val small{font-size:.85rem;color:var(--muted);font-weight:500}
+  .spec-list{margin-top:26px;display:flex;flex-direction:column;gap:12px}
+  .spec-list .row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px dashed var(--line);font-size:.95rem}
+  .spec-list .row span:first-child{color:var(--muted)}
+  .spec-list .row span:last-child{font-weight:600}
+  @media(max-width:880px){.spec-layout{grid-template-columns:1fr}}
+
+  /* COMPARISON */
+  .cmp-table{width:100%;border-collapse:collapse;background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);font-size:.95rem}
+  .cmp-table th,.cmp-table td{padding:16px 18px;text-align:center;border-bottom:1px solid var(--line)}
+  .cmp-table th{background:var(--ink);color:#fff;font-weight:600;font-size:.9rem}
+  .cmp-table th.us{background:var(--teal)}
+  .cmp-table td:first-child,.cmp-table th:first-child{text-align:left;font-weight:600}
+  .cmp-table td.us{background:var(--mint);font-weight:700;color:var(--teal-d)}
+  .cmp-table tr:last-child td{border-bottom:none}
+  .yes{color:var(--teal-d);font-weight:700}.partial{color:#c98a00}.no{color:#b34;opacity:.7}
+  .cmp-wrap{overflow-x:auto}
+
+  /* BENEFITS */
+  .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .ben{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:#fff}
+  .ben h3{font-size:1.15rem;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .ben ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .ben li{font-size:.94rem;color:var(--ink-2);padding-left:26px;position:relative}
+  .ben li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:50%;background:var(--mint);border:2px solid var(--teal)}
+  @media(max-width:880px){.ben-grid{grid-template-columns:1fr}}
+
+  /* QUOTE / PRICE */
+  .quote{background:radial-gradient(900px 500px at 15% 0%,#0e3a52 0,transparent 55%),linear-gradient(160deg,#071a2b,#0b3a5c);color:#fff}
+  .quote-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:start}
+  .quote h2{font-size:clamp(2rem,3.8vw,2.9rem);margin-bottom:18px}
+  .quote .price-note{background:rgba(127,210,242,.1);border:1px solid rgba(127,210,242,.28);border-radius:16px;padding:22px 24px;margin:26px 0}
+  .quote .price-note .big{font-family:'Space Grotesk';font-size:1.6rem;font-weight:700;color:var(--teal-l)}
+  .quote .price-note p{color:#b9cfdb;font-size:.95rem;margin-top:6px}
+  .qbenefit{display:flex;gap:12px;align-items:flex-start;margin-top:18px;color:#cfe2ea;font-size:.96rem}
+  .qbenefit svg{flex:none;margin-top:3px;color:var(--teal-l)}
+  /* FORM */
+  .form-card{background:#fff;color:var(--ink);border-radius:22px;padding:36px;box-shadow:0 30px 70px -30px rgba(0,0,0,.6)}
+  .form-card h3{font-size:1.35rem;margin-bottom:6px}
+  .form-card .fsub{color:var(--muted);font-size:.92rem;margin-bottom:24px}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:.82rem;font-weight:600;color:var(--ink-2)}
+  .field label .req{color:var(--teal-d)}
+  .field input,.field select,.field textarea{
+    font-family:'Inter';font-size:.95rem;padding:12px 14px;border:1.5px solid var(--line);border-radius:11px;background:var(--paper);color:var(--ink);transition:.18s;width:100%;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--teal);background:#fff;box-shadow:0 0 0 4px rgba(27,163,224,.12)}
+  .field textarea{resize:vertical;min-height:90px}
+  .form-card .btn-primary{width:100%;justify-content:center;margin-top:8px;padding:15px}
+  .privacy{font-size:.78rem;color:var(--muted);margin-top:14px;text-align:center}
+  .form-success{display:none;text-align:center;padding:30px 10px}
+  .form-success.show{display:block}
+  .form-success .check{width:72px;height:72px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+  .form-success h3{font-size:1.4rem;margin-bottom:10px}
+  .form-success p{color:var(--muted)}
+  @media(max-width:880px){.quote-grid{grid-template-columns:1fr;gap:36px}.fgrid{grid-template-columns:1fr}}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#8fb0c0;padding:64px 0 30px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+  footer .brand{color:#fff;margin-bottom:14px}
+  footer p.desc{font-size:.92rem;max-width:300px}
+  footer h5{color:#fff;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:.92rem}
+  footer ul a:hover{color:var(--teal-l)}
+  .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;font-size:.85rem}
+  @media(max-width:880px){.foot-top{grid-template-columns:1fr 1fr}}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-in">
+    <a href="#top" class="brand">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="18" stroke="#1ba3e0" stroke-width="2.5"/>
+        <circle cx="20" cy="20" r="7" fill="#071a2b"/>
+        <circle cx="20" cy="20" r="3" fill="#1ba3e0"/>
+        <circle cx="20" cy="5.5" r="2.2" fill="#1ba3e0"/>
+      </svg>
+      <span>Olympus<small>Hermes Robotics</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#solution">Solution</a>
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#specs">Specs</a>
+      <a href="driverless.html">Driverless DNA</a>
+    </nav>
+    <a href="#quote" class="btn btn-primary nav-cta">Request a quote</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top" style="padding:0">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="pill"><span class="dot"></span> Hospital 4.0 · Autonomous pharmacy logistics</span>
+        <h1>The right drug,<br>to the right patient.<br><span class="grad">Autonomously.</span></h1>
+        <p class="sub">Hermes is Olympus' autonomous mobile robot that automates the entire medication flow — from the central pharmacy all the way to the patient's bedside. Traceable, safe, integrated.</p>
+        <div class="hero-cta">
+          <a href="#quote" class="btn btn-primary">Request a quote →</a>
+          <a href="#how-it-works" class="btn btn-light">See how it works</a>
+        </div>
+        <div class="hero-stats">
+          <div class="s"><strong>−30%</strong><span>staff time spent on<br>logistics tasks</span></div>
+          <div class="s"><strong>360°</strong><span>omnidirectional<br>swerve-drive navigation</span></div>
+          <div class="s"><strong>End-to-end</strong><span>full traceability<br>pharmacy → patient</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="glowbg"></div>
+        <!-- ROBOT SVG -->
+        <svg width="330" height="500" viewBox="0 0 330 500" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:2;max-width:100%">
+          <defs>
+            <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dcebf0" stop-opacity="0"/>
+              <stop offset="1" stop-color="#cfe6ea"/>
+            </linearGradient>
+            <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#1ba3e0"/><stop offset="1" stop-color="#0b3a5c"/>
+            </linearGradient>
+            <linearGradient id="lidar" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#0e2c44"/><stop offset="1" stop-color="#1c5573"/>
+            </linearGradient>
+          </defs>
+          <!-- shadow -->
+          <ellipse cx="165" cy="478" rx="115" ry="18" fill="#000" opacity="0.28"/>
+          <!-- LiDAR dome -->
+          <rect x="120" y="38" width="90" height="26" rx="9" fill="url(#lidar)"/>
+          <circle cx="165" cy="51" r="6" fill="#7fd2f2"><animate attributeName="opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/></circle>
+          <rect x="158" y="64" width="14" height="14" fill="#0e2c44"/>
+          <!-- body -->
+          <rect x="70" y="78" width="190" height="370" rx="34" fill="url(#body)" stroke="#bcd6dc" stroke-width="2"/>
+          <rect x="70" y="78" width="190" height="370" rx="34" fill="#fff" opacity="0.5"/>
+          <!-- tablet -->
+          <rect x="92" y="96" width="146" height="96" rx="14" fill="url(#screen)"/>
+          <rect x="104" y="112" width="80" height="9" rx="4" fill="#fff" opacity="0.85"/>
+          <rect x="104" y="128" width="122" height="6" rx="3" fill="#fff" opacity="0.45"/>
+          <rect x="104" y="142" width="100" height="6" rx="3" fill="#fff" opacity="0.45"/>
+          <circle cx="214" cy="170" r="10" fill="#7fd2f2"/>
+          <!-- livery stripe (MMR racing colours) -->
+          <rect x="70" y="198" width="190" height="6" fill="#f26a21"/>
+          <rect x="70" y="204" width="190" height="3" fill="#1ba3e0"/>
+          <!-- drawers -->
+          <g>
+            <rect x="90" y="210" width="150" height="52" rx="11" fill="#fff" stroke="#cfe0e5" stroke-width="2"/>
+            <rect x="150" y="230" width="30" height="6" rx="3" fill="#1ba3e0"/>
+            <circle cx="206" cy="236" r="5" fill="#9fb6bf"/>
+
+            <rect x="90" y="272" width="150" height="52" rx="11" fill="#eaf6fd" stroke="#9fd5f2" stroke-width="2"/>
+            <rect x="150" y="292" width="30" height="6" rx="3" fill="#0e7fb5"/>
+            <text x="104" y="302" font-family="Inter" font-size="11" fill="#0e7fb5" font-weight="700">❄</text>
+            <circle cx="206" cy="298" r="5" fill="#1ba3e0"/>
+
+            <rect x="90" y="334" width="150" height="52" rx="11" fill="#fff" stroke="#cfe0e5" stroke-width="2"/>
+            <rect x="150" y="354" width="30" height="6" rx="3" fill="#1ba3e0"/>
+            <rect x="200" y="350" width="12" height="12" rx="3" fill="#0e2c44"/>
+
+            <rect x="90" y="396" width="150" height="38" rx="11" fill="#f1f7f8" stroke="#cfe0e5" stroke-width="2"/>
+          </g>
+          <!-- swerve wheels -->
+          <rect x="84" y="446" width="40" height="30" rx="9" fill="#0e2c44"/>
+          <rect x="206" y="446" width="40" height="30" rx="9" fill="#0e2c44"/>
+          <circle cx="104" cy="461" r="6" fill="#7fd2f2"/>
+          <circle cx="226" cy="461" r="6" fill="#7fd2f2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <span><b>Automotive-grade</b> LiDAR technology</span><span class="sep"></span>
+    <span>Born from the <b><a href="driverless.html" style="color:var(--teal-l);text-decoration:underline;text-underline-offset:3px">MMR Driverless</a></b> team</span><span class="sep"></span>
+    <span>Native <b>Modula Next</b> integration</span><span class="sep"></span>
+    <span><b>SLAM</b> navigation without GPS</span>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The problem</span>
+      <h2>Medication logistics is still manual</h2>
+      <p>In hospitals, drug distribution still relies almost entirely on human effort: variable timing, fragmented traceability and a high risk of clinical error.</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob-card reveal"><div class="n">∿</div><h4>Staff pulled away from care</h4><p>A significant share of doctors' and nurses' time is absorbed by transport and repetitive logistics tasks.</p></div>
+      <div class="prob-card reveal"><div class="n">⚠</div><h4>Administration errors</h4><p>The heavy manual component increases the probability of errors in managing and delivering drugs.</p></div>
+      <div class="prob-card reveal"><div class="n">⛓</div><h4>Fragmented traceability</h4><p>Prescriptions, pharmacy and logistics often live on separate, non-integrated systems.</p></div>
+      <div class="prob-card reveal"><div class="n">⏱</div><h4>Non-standard timing</h4><p>Delivery times vary with workload and the availability of operators.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section id="solution">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">The solution</span>
+      <h2>One ecosystem, from pharmacy to patient</h2>
+      <p>Hermes isn't just a robot: it's an integrated platform combining automated storage, autonomous robotics and clinical software into a single, continuous, traceable flow.</p>
+    </div>
+    <div class="sol-grid">
+      <div class="sol-card reveal">
+        <span class="tag">01 · Storage</span>
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7fd2f2" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18"/></svg></div>
+        <h3>Modula Next cabinets</h3>
+        <p>High-density vertical storage in the central pharmacy: guided picking, real-time stock management and every drug uniquely identified.</p>
+      </div>
+      <div class="sol-card reveal">
+        <span class="tag">02 · Transport</span>
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7fd2f2" stroke-width="2"><rect x="5" y="3" width="14" height="18" rx="3"/><circle cx="12" cy="8" r="1.5" fill="#7fd2f2"/><path d="M8 13h8M8 17h5"/></svg></div>
+        <h3>Hermes autonomous robot</h3>
+        <p>LiDAR + SLAM navigation, omnidirectional movement and modular drawers — standard, refrigerated and access-controlled — digitally assigned to each individual patient.</p>
+      </div>
+      <div class="sol-card reveal">
+        <span class="tag">03 · Coordination</span>
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7fd2f2" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/></svg></div>
+        <h3>Clinical software</h3>
+        <p>Three layers — clinician app, robot fleet and Modula integration — orchestrate requests, administrations and end-to-end traceability on a single platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Features</span>
+      <h2>Built for the real ward</h2>
+      <p>Every feature is born from a concrete operational need of healthcare facilities.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div><h4>Follow-Me mode</h4><p>The robot follows the clinician through corridors via Bluetooth Low Energy — like a shadow assistant — keeping safe distance from other robots.</p></div>
+      <div class="feat reveal"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></div><h4>Elevator control</h4><p>An encrypted short-range radio pulse simulates a button press: no invasive modifications to the existing infrastructure.</p></div>
+      <div class="feat reveal"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2h12v6l-4 4 4 4v6H6v-6l4-4-4-4z"/></svg></div><h4>Refrigerated drawers</h4><p>Temperature-controlled modules for heat-sensitive drugs and reinforced compartments for high-risk substances.</p></div>
+      <div class="feat reveal"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div><h4>Selective badge unlock</h4><p>The clinician's NFC/RFID badge opens only that patient's specific drawer, automatically logging the time in the clinical record.</p></div>
+      <div class="feat reveal"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg></div><h4>Emergency call</h4><p>On-demand dispatch: in case of need, the clinician summons the nearest available robot straight from their smartphone.</p></div>
+      <div class="feat reveal"><div class="fi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div><h4>End-to-end traceability</h4><p>Every movement of the drug is recorded: where it is, who picked it up and which patient it's destined for.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>A day with Hermes</h2>
+      <p>From loading in the pharmacy to returning for sanitization, the entire cycle is automated and supervised.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="dot">1</div><h4>Preparation</h4><p>The software gathers ward requests and generates the loading list. The pharmacist fills the drawers, guided by Modula codes.</p></div>
+      <div class="step reveal"><div class="dot">2</div><h4>Transit</h4><p>The robot sets off autonomously, navigates with LiDAR and SLAM and avoids dynamic obstacles. It calls elevators via radio.</p></div>
+      <div class="step reveal"><div class="dot">3</div><h4>Ward round</h4><p>It locks onto the clinician in Follow-Me mode and waits outside rooms until authorized through the app.</p></div>
+      <div class="step reveal"><div class="dot">4</div><h4>Administration</h4><p>The clinician taps their badge: only the patient's drawer unlocks. The therapy is checked off and recorded.</p></div>
+      <div class="step reveal"><div class="dot">5</div><h4>Return</h4><p>Once the round is done, the robot heads back to the pharmacy for sanitization and recharging at the docking station.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECS -->
+<section class="specs" id="specs">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Technical specs</span>
+      <h2>Automotive engineering, serving the hospital</h2>
+    </div>
+    <div class="spec-layout">
+      <div class="spec-cards reveal">
+        <div class="spec-card"><div class="lbl">Payload capacity</div><div class="val">500 <small>kg</small></div></div>
+        <div class="spec-card"><div class="lbl">Usable volume</div><div class="val">486 <small>liters</small></div></div>
+        <div class="spec-card"><div class="lbl">Footprint</div><div class="val">1.5×0.6×1.4 <small>m</small></div></div>
+        <div class="spec-card"><div class="lbl">Movement</div><div class="val">360° <small>swerve</small></div></div>
+      </div>
+      <div class="reveal">
+        <div class="spec-list">
+          <div class="row"><span>Navigation</span><span>Hesai OT128 LiDAR · SLAM</span></div>
+          <div class="row"><span>Drive</span><span>4 swerve-drive modules · omnidirectional</span></div>
+          <div class="row"><span>Safety</span><span>2× 2D laser scanners · IMU · kill switch</span></div>
+          <div class="row"><span>Drawer unlock</span><span>Solenoids · NFC / RFID badge</span></div>
+          <div class="row"><span>Fleet coordination</span><span>BLE · MAC address · RSSI analysis</span></div>
+          <div class="row"><span>Power</span><span>High-capacity battery · automatic docking</span></div>
+          <div class="row"><span>Autonomy</span><span>A full hospital shift</span></div>
+          <div class="row"><span>Updates</span><span>OTA (Over The Air)</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section id="comparison">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Competitive edge</span>
+      <h2>Not a robot. Not a cabinet. An ecosystem.</h2>
+      <p>While competitors sell a single component, Hermes + Modula automate the entire logistics flow.</p>
+    </div>
+    <div class="cmp-wrap reveal">
+      <table class="cmp-table">
+        <thead>
+          <tr><th>Capability</th><th>Robotic competitors</th><th>Automated cabinets</th><th class="us">Hermes + Modula</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Autonomous transport</td><td class="yes">Yes</td><td class="no">—</td><td class="us">Yes</td></tr>
+          <tr><td>Medication management</td><td class="partial">Partial</td><td class="yes">Yes</td><td class="us">Yes</td></tr>
+          <tr><td>Refrigerated drawers</td><td class="partial">Limited</td><td class="partial">Limited</td><td class="us">Yes</td></tr>
+          <tr><td>Clinician follow-me</td><td class="no">Absent</td><td class="no">—</td><td class="us">Yes</td></tr>
+          <tr><td>Emergency call</td><td class="partial">Limited</td><td class="no">—</td><td class="us">Yes</td></tr>
+          <tr><td>End-to-end traceability</td><td class="partial">Partial</td><td class="partial">Partial</td><td class="us">Complete</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="problem">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Benefits</span>
+      <h2>Value at every level</h2>
+    </div>
+    <div class="ben-grid">
+      <div class="ben reveal">
+        <h3>🩺 For staff</h3>
+        <ul>
+          <li>Up to 30% less time on trips and retrievals</li>
+          <li>Repetitive logistics tasks eliminated</li>
+          <li>Less operational stress and cognitive load</li>
+          <li>More time devoted to patient care</li>
+        </ul>
+      </div>
+      <div class="ben reveal">
+        <h3>🏥 For the facility</h3>
+        <ul>
+          <li>Drastic reduction in administration errors</li>
+          <li>Full traceability from warehouse to bedside</li>
+          <li>Optimized stock and reduced waste</li>
+          <li>Higher overall operational efficiency</li>
+        </ul>
+      </div>
+      <div class="ben reveal">
+        <h3>🌐 For the health system</h3>
+        <ul>
+          <li>Scalable, multi-site operating model</li>
+          <li>Progressive ward-by-ward rollout</li>
+          <li>Full alignment with the Hospital 4.0 model</li>
+          <li>More digital, safe and sustainable logistics</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE / PRICE -->
+<section class="quote" id="quote">
+  <div class="wrap">
+    <div class="quote-grid">
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--teal-l)">Tailored quote</span>
+        <h2>Pricing depends on your facility</h2>
+        <p style="color:#b9cfdb;font-size:1.06rem">Every deployment is tailored to the number of robots, the configuration of the pharmaceutical modules and the level of automation required. That's why we don't work from a price list: we build a dedicated offer.</p>
+        <div class="price-note">
+          <div class="big">Pricing on request</div>
+          <p>Fill in the form and the Olympus team will get back to you with a technical and commercial assessment tailored to your ward or facility.</p>
+        </div>
+        <div class="qbenefit"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Free assessment of your logistics needs</span></div>
+        <div class="qbenefit"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Modular, scalable ward-by-ward configuration</span></div>
+        <div class="qbenefit"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg><span>Support, maintenance and training included</span></div>
+      </div>
+
+      <div class="form-card reveal">
+        <form id="quoteForm" novalidate>
+          <h3>Request a quote</h3>
+          <p class="fsub">Our team replies within 2 business days.</p>
+          <div class="fgrid">
+            <div class="field"><label>First name <span class="req">*</span></label><input name="firstname" required placeholder="John"></div>
+            <div class="field"><label>Last name <span class="req">*</span></label><input name="lastname" required placeholder="Smith"></div>
+          </div>
+          <div class="field full"><label>Facility / hospital group <span class="req">*</span></label><input name="facility" required placeholder="e.g. St. Mary's Clinic"></div>
+          <div class="fgrid">
+            <div class="field"><label>Role</label>
+              <select name="role">
+                <option value="">Select…</option>
+                <option>Medical direction</option>
+                <option>General management</option>
+                <option>Hospital pharmacy</option>
+                <option>Procurement</option>
+                <option>Innovation / IT</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field"><label>Number of beds</label>
+              <select name="beds">
+                <option value="">Select…</option>
+                <option>&lt; 100</option>
+                <option>100 – 300</option>
+                <option>300 – 600</option>
+                <option>&gt; 600</option>
+              </select>
+            </div>
+          </div>
+          <div class="fgrid">
+            <div class="field"><label>Email <span class="req">*</span></label><input type="email" name="email" required placeholder="name@facility.com"></div>
+            <div class="field"><label>Phone</label><input name="phone" placeholder="+1 …"></div>
+          </div>
+          <div class="field full"><label>Already a Modula customer?</label>
+            <select name="modula">
+              <option value="">Select…</option>
+              <option>Yes, we already use Modula systems</option>
+              <option>No, but we're interested</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <div class="field full"><label>Needs and wards of interest</label><textarea name="notes" placeholder="Tell us which wards you'd like to automate and your main logistics pain points…"></textarea></div>
+          <button type="submit" class="btn btn-primary">Send request →</button>
+          <p class="privacy">By submitting, you agree to be contacted by the Olympus team. Your data will not be shared with third parties.</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="check"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1ba3e0" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <h3>Request sent!</h3>
+          <p>Thank you <span id="thxName">—</span>. The Olympus team will get back to you shortly with an assessment tailored to your facility.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="brand">
+          <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#1ba3e0" stroke-width="2.5"/><circle cx="20" cy="20" r="7" fill="#fff"/><circle cx="20" cy="20" r="3" fill="#1ba3e0"/><circle cx="20" cy="5.5" r="2.2" fill="#1ba3e0"/></svg>
+          <span style="font-family:'Space Grotesk';font-size:1.25rem;font-weight:700">Olympus</span>
+        </div>
+        <p class="desc">Autonomous healthcare logistics. Building Hospital 4.0 — one drug at a time. <em>For those who care.</em></p>
+      </div>
+      <div><h5>Product</h5><ul>
+        <li><a href="#solution">Solution</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#specs">Specs</a></li>
+        <li><a href="#comparison">Comparison</a></li>
+      </ul></div>
+      <div><h5>Company</h5><ul>
+        <li><a href="#problem">The problem</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="driverless.html">Driverless DNA</a></li>
+        <li><a href="#quote">Get a quote</a></li>
+      </ul></div>
+      <div><h5>Contact</h5><ul>
+        <li><a href="#quote">Request a quote</a></li>
+        <li><a href="mailto:info@olympusrobotics.com">info@olympusrobotics.com</a></li>
+        <li>Emilia-Romagna · Italy</li>
+      </ul></div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Olympus — Hermes Robotics. Demonstration prototype.</span>
+      <span>Privacy · Terms · Cookies</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Form (prototype — no backend): client-side confirmation only
+  const form = document.getElementById('quoteForm');
+  form.addEventListener('submit', (ev)=>{
+    ev.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    const name = form.firstname.value.trim();
+    document.getElementById('thxName').textContent = name ? name : '';
+    form.style.display='none';
+    document.getElementById('formSuccess').classList.add('show');
+    document.getElementById('formSuccess').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+</script>
+</body>
+</html>

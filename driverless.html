@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Driverless DNA — From the track to the ward | Olympus × MMR</title>
+<meta name="description" content="Hermes by Olympus is born from MMR – MoRe Modena Racing, the UNIMORE Formula SAE driverless team. The same automotive-grade LiDAR, SLAM localization and autonomous-navigation know-how proven on the racetrack now powers hospital logistics." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a2540;--ink-2:#103a5e;
+    --teal:#1ba3e0;--teal-d:#0e7fb5;--teal-l:#7fd2f2;
+    --orange:#f26a21;--orange-d:#d9560f;
+    --mint:#e7f5fc;--paper:#f3f8fc;--white:#fff;
+    --muted:#5c7384;--line:#e2ecef;
+    --radius:18px;--maxw:1180px;
+    --shadow-sm:0 6px 20px -8px rgba(10,37,64,.22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.brand{font-family:'Space Grotesk','Inter',sans-serif;letter-spacing:-.02em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  section{padding:90px 0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);margin-bottom:18px}
+  .eyebrow::before{content:"";width:26px;height:3px;background:var(--orange);border-radius:2px}
+  .btn{display:inline-flex;align-items:center;gap:9px;cursor:pointer;border:none;font-family:'Inter';font-weight:600;font-size:.98rem;padding:14px 26px;border-radius:999px;transition:.22s ease}
+  .btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 24px -10px rgba(27,163,224,.8)}
+  .btn-primary:hover{background:var(--teal-d);transform:translateY(-2px)}
+  .btn-orange{background:var(--orange);color:#fff}
+  .btn-orange:hover{background:var(--orange-d);transform:translateY(-2px)}
+  .btn-light{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.28)}
+  .btn-light:hover{background:rgba(255,255,255,.22)}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav-in{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:30px}
+  .brand{display:flex;align-items:center;gap:11px;font-size:1.28rem;font-weight:700;color:var(--ink)}
+  .logo-mark{width:34px;height:34px;flex:none}
+  .brand small{display:block;font-family:'Inter';font-size:.62rem;font-weight:600;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;margin-top:1px}
+  .nav-links{display:flex;gap:26px;margin-left:auto;font-size:.95rem;font-weight:500;color:var(--ink-2)}
+  .nav-links a:hover{color:var(--teal-d)}
+  .nav-links a.active{color:var(--teal-d);font-weight:700}
+  @media(max-width:900px){.nav-links{display:none}}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;color:#fff;
+    background:radial-gradient(1100px 560px at 80% -10%,#15557f 0,transparent 60%),linear-gradient(160deg,#0a2540 0%,#0e3a5e 60%,#0b3a5c 130%)}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;min-height:78vh;padding:60px 0}
+  .hero .pill{display:inline-flex;align-items:center;gap:9px;background:rgba(242,106,33,.14);border:1px solid rgba(242,106,33,.4);color:#ffb98c;padding:7px 15px;border-radius:999px;font-size:.8rem;font-weight:600;margin-bottom:24px}
+  .hero h1{font-size:clamp(2.4rem,5vw,3.9rem);font-weight:700}
+  .hero h1 .grad{background:linear-gradient(100deg,var(--teal-l),#cdeeff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{font-size:1.14rem;color:#b9cfdb;max-width:520px;margin:22px 0 32px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .carwrap{position:relative;display:flex;justify-content:center;align-items:center}
+  .carglow{position:absolute;width:480px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(27,163,224,.3),transparent 65%);filter:blur(8px)}
+  @media(max-width:880px){.hero-grid{grid-template-columns:1fr;text-align:center;min-height:auto}.hero p.sub{margin-left:auto;margin-right:auto}.hero-cta{justify-content:center}}
+
+  /* STATS STRIP */
+  .strip{background:var(--ink-2);color:#cfe2ea;padding:28px 0}
+  .strip-in{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .strip .s strong{display:block;font-family:'Space Grotesk';font-size:1.7rem;color:#fff}
+  .strip .s span{font-size:.82rem;color:#9fc2cf}
+  @media(max-width:880px){.strip-in{grid-template-columns:1fr 1fr;gap:24px}}
+
+  .sec-head{max-width:720px;margin-bottom:50px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.5rem);font-weight:700;margin-bottom:14px}
+  .sec-head p{color:var(--muted);font-size:1.06rem}
+
+  /* SHARED TECH */
+  .tech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .tech{border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;background:linear-gradient(180deg,#fff,var(--mint))}
+  .tech .ico{width:50px;height:50px;border-radius:13px;background:var(--ink);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .tech h3{font-size:1.12rem;margin-bottom:8px}
+  .tech p{font-size:.94rem;color:var(--muted)}
+  @media(max-width:880px){.tech-grid{grid-template-columns:1fr}}
+
+  /* TRANSFER (two columns track->ward) */
+  .transfer{background:var(--paper)}
+  .tx-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:30px;align-items:stretch}
+  .tx-col{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px;box-shadow:var(--shadow-sm)}
+  .tx-col h3{font-size:1.2rem;margin-bottom:6px}
+  .tx-col .ctx{font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:18px}
+  .tx-col.track .ctx{color:var(--orange-d)}
+  .tx-col.ward .ctx{color:var(--teal-d)}
+  .tx-col ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .tx-col li{font-size:.94rem;padding-left:24px;position:relative;color:var(--ink-2)}
+  .tx-col li::before{content:"";position:absolute;left:0;top:7px;width:12px;height:12px;border-radius:3px}
+  .tx-col.track li::before{background:var(--orange)}
+  .tx-col.ward li::before{background:var(--teal)}
+  .tx-arrow{display:flex;align-items:center;justify-content:center;color:var(--muted)}
+  .tx-arrow svg{width:46px;height:46px}
+  @media(max-width:880px){.tx-grid{grid-template-columns:1fr}.tx-arrow{transform:rotate(90deg);padding:6px 0}}
+
+  /* TIMELINE */
+  .tl{position:relative;border-left:2px solid var(--line);margin-left:10px;padding-left:34px;display:flex;flex-direction:column;gap:34px}
+  .tl .item{position:relative}
+  .tl .item::before{content:"";position:absolute;left:-43px;top:2px;width:16px;height:16px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 0 0 2px var(--orange)}
+  .tl .yr{font-family:'Space Grotesk';font-weight:700;color:var(--teal-d);font-size:1.05rem;margin-bottom:4px}
+  .tl .item p{color:var(--muted);font-size:.96rem}
+
+  /* QUOTE BANNER */
+  .cta{background:radial-gradient(900px 460px at 18% 0,#0e3a5e 0,transparent 55%),linear-gradient(160deg,#0a2540,#0b3a5c);color:#fff;text-align:center}
+  .cta h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:16px}
+  .cta p{color:#b9cfdb;max-width:600px;margin:0 auto 28px;font-size:1.06rem}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#8fb0c0;padding:56px 0 30px}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.08)}
+  footer .brand{color:#fff}
+  footer .links{display:flex;gap:26px;font-size:.92rem}
+  footer .links a:hover{color:var(--teal-l)}
+  .foot-bot{padding-top:22px;font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  .note{background:#fff;border:1px dashed var(--line);border-radius:14px;padding:16px 20px;font-size:.86rem;color:var(--muted);margin-top:26px}
+  .reveal{opacity:0;transform:translateY(24px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="brand">
+      <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#1ba3e0" stroke-width="2.5"/><circle cx="20" cy="20" r="7" fill="#0a2540"/><circle cx="20" cy="20" r="3" fill="#1ba3e0"/><circle cx="20" cy="5.5" r="2.2" fill="#f26a21"/></svg>
+      <span>Olympus<small>Hermes Robotics</small></span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#solution">Solution</a>
+      <a href="index.html#features">Features</a>
+      <a href="index.html#specs">Specs</a>
+      <a href="driverless.html" class="active">Driverless DNA</a>
+      <a href="index.html#quote">Request a quote</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="pill">🏁 MMR · MoRe Modena Racing — Formula SAE Driverless</span>
+        <h1>From the racetrack<br>to the hospital ward.<br><span class="grad">Same DNA.</span></h1>
+        <p class="sub">Hermes wasn't designed in a vacuum. Its autonomous core was forged alongside <b>MMR – MoRe Modena Racing</b>, the UNIMORE Formula SAE driverless team. The technology proven at racing speed now moves medication safely through hospital corridors.</p>
+        <div class="hero-cta">
+          <a href="#shared-tech" class="btn btn-orange">See the shared technology →</a>
+          <a href="index.html" class="btn btn-light">Back to Hermes</a>
+        </div>
+      </div>
+      <div class="carwrap">
+        <div class="carglow"></div>
+        <!-- FORMULA SAE CAR SVG (livery: white / cyan / orange · #799) -->
+        <svg width="560" height="320" viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:2;max-width:100%">
+          <ellipse cx="290" cy="290" rx="240" ry="20" fill="#000" opacity="0.25"/>
+          <!-- rear wing -->
+          <rect x="455" y="92" width="80" height="10" rx="3" fill="#0a2540"/>
+          <rect x="500" y="92" width="10" height="78" fill="#0a2540"/>
+          <!-- floor/body -->
+          <path d="M40 210 Q70 196 130 196 L300 196 Q360 190 430 196 L505 200 Q520 202 520 214 L515 232 Q510 242 495 242 L70 242 Q44 240 40 226 Z" fill="#fff" stroke="#cdd8e0" stroke-width="2"/>
+          <!-- nose cone -->
+          <path d="M40 210 Q22 214 16 222 Q22 232 40 226 Z" fill="#fff" stroke="#cdd8e0" stroke-width="1.5"/>
+          <!-- cyan livery -->
+          <path d="M70 196 L300 196 Q360 190 430 196 L430 210 L70 210 Z" fill="#1ba3e0"/>
+          <!-- orange stripe -->
+          <path d="M70 226 L505 226 L508 236 Q505 242 495 242 L70 242 Z" fill="#f26a21"/>
+          <!-- sidepod -->
+          <path d="M250 210 Q300 206 360 212 L360 238 L250 238 Z" fill="#fff" stroke="#cdd8e0" stroke-width="1.5"/>
+          <rect x="270" y="216" width="70" height="16" rx="3" fill="#1ba3e0" opacity="0.18"/>
+          <!-- cockpit + halo -->
+          <path d="M300 196 Q318 150 350 150 Q392 150 405 196 Z" fill="#16324d"/>
+          <ellipse cx="350" cy="176" rx="20" ry="16" fill="#0a2540"/>
+          <path d="M318 196 Q330 158 352 156" stroke="#0a2540" stroke-width="5" fill="none"/>
+          <!-- number 799 -->
+          <text x="455" y="150" font-family="Space Grotesk,Arial" font-size="34" font-weight="700" fill="#0a2540">799</text>
+          <!-- front wing -->
+          <rect x="8" y="232" width="60" height="9" rx="3" fill="#0a2540"/>
+          <rect x="8" y="220" width="14" height="22" rx="3" fill="#f26a21"/>
+          <!-- wheels -->
+          <g>
+            <circle cx="150" cy="244" r="48" fill="#16324d"/><circle cx="150" cy="244" r="47" fill="none" stroke="#0a2540" stroke-width="2"/>
+            <circle cx="150" cy="244" r="22" fill="#c9d4dc"/><circle cx="150" cy="244" r="7" fill="#1ba3e0"/>
+            <circle cx="430" cy="244" r="52" fill="#16324d"/><circle cx="430" cy="244" r="51" fill="none" stroke="#0a2540" stroke-width="2"/>
+            <circle cx="430" cy="244" r="24" fill="#c9d4dc"/><circle cx="430" cy="244" r="7" fill="#1ba3e0"/>
+          </g>
+          <!-- UNIMORE wordmark -->
+          <text x="150" y="218" font-family="Space Grotesk,Arial" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1">UNIMORE</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="strip">
+  <div class="wrap strip-in">
+    <div class="s"><strong>Hesai OT128</strong><span>automotive-grade LiDAR<br>shared supply chain</span></div>
+    <div class="s"><strong>SLAM</strong><span>localization proven<br>without GPS</span></div>
+    <div class="s"><strong>Formula SAE</strong><span>UNIMORE Modena<br>student racing team</span></div>
+    <div class="s"><strong>Track-validated</strong><span>perception in extreme,<br>dynamic conditions</span></div>
+  </div>
+</div>
+
+<!-- SHARED TECH -->
+<section id="shared-tech">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Shared technology</span>
+      <h2>The same core, two very different tracks</h2>
+      <p>The technologies at the heart of Hermes derive directly from the driverless projects developed with MMR: the know-how built on the circuit now lives inside our hospital robots.</p>
+    </div>
+    <div class="tech-grid">
+      <div class="tech reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7fd2f2" stroke-width="2"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9" stroke-dasharray="2 3"/></svg></div>
+        <h3>LiDAR perception</h3>
+        <p>The same automotive-grade Hesai OT128 sensor used on the driverless car. Thanks to consolidated commercial agreements with the manufacturer, we bring race-validated hardware into healthcare at a competitive cost.</p>
+      </div>
+      <div class="tech reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7fd2f2" stroke-width="2"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+        <h3>SLAM & localization</h3>
+        <p>Real-time mapping and self-localization algorithms born to keep a car on the racing line — now letting Hermes know exactly where it is inside a hospital, with no GPS available indoors.</p>
+      </div>
+      <div class="tech reveal">
+        <div class="ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7fd2f2" stroke-width="2"><path d="M5 12a7 7 0 0 1 14 0"/><path d="M12 12l4-3"/><circle cx="12" cy="12" r="1.5" fill="#7fd2f2"/></svg></div>
+        <h3>Autonomous motion</h3>
+        <p>Sensor-fusion, obstacle detection and safe trajectory planning in dynamic environments. On track it dodges cones at speed; in the ward it safely avoids beds, equipment and people.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFER -->
+<section class="transfer">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Technology transfer</span>
+      <h2>What the circuit taught us, the ward now uses</h2>
+    </div>
+    <div class="tx-grid reveal">
+      <div class="tx-col track">
+        <div class="ctx">🏁 On the racetrack — MMR Driverless</div>
+        <h3>Race-grade autonomy</h3>
+        <ul style="margin-top:16px">
+          <li>Perception at high speed in unpredictable conditions</li>
+          <li>Millisecond decision-making and control</li>
+          <li>Robust sensor fusion (LiDAR + IMU + encoders)</li>
+          <li>Fail-safe behaviour and emergency stops</li>
+        </ul>
+      </div>
+      <div class="tx-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h16M14 6l6 6-6 6"/></svg></div>
+      <div class="tx-col ward">
+        <div class="ctx">🏥 In the hospital — Hermes</div>
+        <h3>Ward-grade safety</h3>
+        <ul style="margin-top:16px">
+          <li>Smooth navigation among patients and staff</li>
+          <li>Continuous re-planning around dynamic obstacles</li>
+          <li>The same LiDAR + IMU + safety-scanner stack</li>
+          <li>Kill switch and clutch-disengage for manual move</li>
+        </ul>
+      </div>
+    </div>
+    <div class="note reveal">⚙️ Want to use a real photo of the car? Drop a <code>car.jpg</code> into this folder and we'll swap the illustration for it. The image you shared (car&nbsp;#799, UNIMORE Modena) inspired the livery colours used across this whole site.</div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Heritage</span>
+      <h2>A shared road, year after year</h2>
+    </div>
+    <div class="tl reveal" style="max-width:760px">
+      <div class="item"><div class="yr">The racing years</div><p>Olympus builds its technological path side by side with MMR – MoRe Modena Racing, developing autonomous vehicles and advanced environmental-perception systems within the Formula SAE driverless project.</p></div>
+      <div class="item"><div class="yr">First robots</div><p>The first autonomous logistics robots are built thanks to this partnership, progressively refining performance, reliability and safety by transferring automotive know-how to industrial use.</p></div>
+      <div class="item"><div class="yr">Into industry</div><p>The platform matures across complex logistics environments — collecting data on track and in the field, and validating the same perception stack at scale.</p></div>
+      <div class="item"><div class="yr">Today — healthcare</div><p>MMR remains a strategic partner. The know-how developed on the circuits and in the labs lives on inside Hermes, becoming a key element of the innovation we bring to hospitals.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <h2 class="reveal">Race-proven technology, now caring for patients</h2>
+    <p class="reveal">Discover how the Hermes ecosystem brings autonomous logistics to your facility — pricing tailored to your needs.</p>
+    <div class="cta-row reveal">
+      <a href="index.html#quote" class="btn btn-primary">Request a quote →</a>
+      <a href="index.html" class="btn btn-light">Explore Hermes</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="brand">
+        <svg class="logo-mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#1ba3e0" stroke-width="2.5"/><circle cx="20" cy="20" r="7" fill="#fff"/><circle cx="20" cy="20" r="3" fill="#1ba3e0"/><circle cx="20" cy="5.5" r="2.2" fill="#f26a21"/></svg>
+        <span style="font-family:'Space Grotesk';font-size:1.25rem;font-weight:700">Olympus</span>
+      </div>
+      <div class="links">
+        <a href="index.html#solution">Solution</a>
+        <a href="index.html#features">Features</a>
+        <a href="driverless.html">Driverless DNA</a>
+        <a href="index.html#quote">Quote</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Olympus — Hermes Robotics. Demonstration prototype.</span>
+      <span>In partnership with MMR – MoRe Modena Racing · UNIMORE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
