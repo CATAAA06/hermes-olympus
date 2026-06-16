@@ -57,6 +57,10 @@
   .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
   .carwrap{position:relative;display:flex;justify-content:center;align-items:center}
   .carglow{position:absolute;width:480px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(27,163,224,.3),transparent 65%);filter:blur(8px)}
+  .carphoto{position:relative;z-index:2;margin:0;width:100%;max-width:540px;border-radius:18px;overflow:hidden;background:#0a2540;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 70px -28px rgba(0,0,0,.7)}
+  .carphoto img{display:block;width:100%;height:auto}
+  .carphoto figcaption{font-size:.78rem;color:#b9cfdb;padding:11px 16px;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .carphoto .num{font-family:'Space Grotesk';font-weight:700;color:#fff;background:var(--orange);padding:1px 8px;border-radius:5px;font-size:.78rem}
   @media(max-width:880px){.hero-grid{grid-template-columns:1fr;text-align:center;min-height:auto}.hero p.sub{margin-left:auto;margin-right:auto}.hero-cta{justify-content:center}}
 
   /* STATS STRIP */
@@ -156,42 +160,10 @@
       </div>
       <div class="carwrap">
         <div class="carglow"></div>
-        <!-- FORMULA SAE CAR SVG (livery: white / cyan / orange · #799) -->
-        <svg width="560" height="320" viewBox="0 0 560 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="position:relative;z-index:2;max-width:100%">
-          <ellipse cx="290" cy="290" rx="240" ry="20" fill="#000" opacity="0.25"/>
-          <!-- rear wing -->
-          <rect x="455" y="92" width="80" height="10" rx="3" fill="#0a2540"/>
-          <rect x="500" y="92" width="10" height="78" fill="#0a2540"/>
-          <!-- floor/body -->
-          <path d="M40 210 Q70 196 130 196 L300 196 Q360 190 430 196 L505 200 Q520 202 520 214 L515 232 Q510 242 495 242 L70 242 Q44 240 40 226 Z" fill="#fff" stroke="#cdd8e0" stroke-width="2"/>
-          <!-- nose cone -->
-          <path d="M40 210 Q22 214 16 222 Q22 232 40 226 Z" fill="#fff" stroke="#cdd8e0" stroke-width="1.5"/>
-          <!-- cyan livery -->
-          <path d="M70 196 L300 196 Q360 190 430 196 L430 210 L70 210 Z" fill="#1ba3e0"/>
-          <!-- orange stripe -->
-          <path d="M70 226 L505 226 L508 236 Q505 242 495 242 L70 242 Z" fill="#f26a21"/>
-          <!-- sidepod -->
-          <path d="M250 210 Q300 206 360 212 L360 238 L250 238 Z" fill="#fff" stroke="#cdd8e0" stroke-width="1.5"/>
-          <rect x="270" y="216" width="70" height="16" rx="3" fill="#1ba3e0" opacity="0.18"/>
-          <!-- cockpit + halo -->
-          <path d="M300 196 Q318 150 350 150 Q392 150 405 196 Z" fill="#16324d"/>
-          <ellipse cx="350" cy="176" rx="20" ry="16" fill="#0a2540"/>
-          <path d="M318 196 Q330 158 352 156" stroke="#0a2540" stroke-width="5" fill="none"/>
-          <!-- number 799 -->
-          <text x="455" y="150" font-family="Space Grotesk,Arial" font-size="34" font-weight="700" fill="#0a2540">799</text>
-          <!-- front wing -->
-          <rect x="8" y="232" width="60" height="9" rx="3" fill="#0a2540"/>
-          <rect x="8" y="220" width="14" height="22" rx="3" fill="#f26a21"/>
-          <!-- wheels -->
-          <g>
-            <circle cx="150" cy="244" r="48" fill="#16324d"/><circle cx="150" cy="244" r="47" fill="none" stroke="#0a2540" stroke-width="2"/>
-            <circle cx="150" cy="244" r="22" fill="#c9d4dc"/><circle cx="150" cy="244" r="7" fill="#1ba3e0"/>
-            <circle cx="430" cy="244" r="52" fill="#16324d"/><circle cx="430" cy="244" r="51" fill="none" stroke="#0a2540" stroke-width="2"/>
-            <circle cx="430" cy="244" r="24" fill="#c9d4dc"/><circle cx="430" cy="244" r="7" fill="#1ba3e0"/>
-          </g>
-          <!-- UNIMORE wordmark -->
-          <text x="150" y="218" font-family="Space Grotesk,Arial" font-size="11" font-weight="700" fill="#fff" text-anchor="middle" letter-spacing="1">UNIMORE</text>
-        </svg>
+        <figure class="carphoto">
+          <img src="car.jpg" alt="MMR – MoRe Modena Racing Formula SAE car #799, UNIMORE Modena" loading="lazy">
+          <figcaption><span class="num">#799</span> MMR – MoRe Modena Racing · UNIMORE Modena · Formula SAE Driverless</figcaption>
+        </figure>
       </div>
     </div>
   </div>
@@ -265,7 +237,7 @@
         </ul>
       </div>
     </div>
-    <div class="note reveal">⚙️ Want to use a real photo of the car? Drop a <code>car.jpg</code> into this folder and we'll swap the illustration for it. The image you shared (car&nbsp;#799, UNIMORE Modena) inspired the livery colours used across this whole site.</div>
+    <div class="note reveal">🎨 The livery of car&nbsp;#799 (MMR – MoRe Modena Racing, UNIMORE Modena) — white, cyan and orange — sets the colour palette used across this entire site.</div>
   </div>
 </section>
 
