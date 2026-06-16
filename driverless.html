@@ -37,6 +37,7 @@
 
   /* NAV */
   header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  header.nav::before{content:"";display:block;height:4px;background:linear-gradient(90deg,var(--teal) 0 55%,var(--orange) 55% 100%)}
   .nav-in{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;align-items:center;gap:30px}
   .brand{display:flex;align-items:center;gap:11px;font-size:1.28rem;font-weight:700;color:var(--ink)}
   .logo-mark{width:34px;height:34px;flex:none}
